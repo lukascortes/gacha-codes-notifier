@@ -7,6 +7,7 @@ from pathlib import Path
 from discord_poster import post_code
 from fetchers.base import BaseFetcher
 from fetchers.hoyo import HoyoFetcher
+from fetchers.wuwa import WuwaFetcher
 from models import Code
 
 log = logging.getLogger("check_codes")
@@ -55,8 +56,9 @@ def save_state(state: dict[str, list[str]]) -> None:
 def build_fetchers() -> list[BaseFetcher]:
     return [
         HoyoFetcher("genshin"),
-        HoyoFetcher("hkrpg"),
-        HoyoFetcher("nap"),
+        # HoyoFetcher("hkrpg"),  # disabled — re-enable when DISCORD_WEBHOOK_HSR is set
+        # HoyoFetcher("nap"),    # disabled — re-enable when DISCORD_WEBHOOK_ZZZ is set
+        WuwaFetcher(),
     ]
 
 
